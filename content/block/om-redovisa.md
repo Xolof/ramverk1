@@ -1,4 +1,3 @@
 #### Redovisa på GitHub
 
-Här är mitt [redovisa-repo på GitHub](XXX).
-(KOMMER SNART!)
+Här är mitt [redovisa-repo på GitHub](https://github.com/Xolof/ramverk1).
