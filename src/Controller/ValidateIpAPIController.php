@@ -45,7 +45,6 @@ class ValidateIpAPIController implements ContainerInjectableInterface
             $item[] = ["ip" => $input];
             $item[] = ["valid" => true];
             $item[] = ["type" => $ipType];
-            $item[] = ["valid" => true];
 
             if ($hostName) {
                 $item[] = ["hostname" => $hostName];
