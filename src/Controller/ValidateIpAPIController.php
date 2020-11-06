@@ -12,6 +12,7 @@ class ValidateIpAPIController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
 
+
     private function validateIp($ipAdress)
     {
         if (filter_var($ipAdress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
@@ -25,13 +26,12 @@ class ValidateIpAPIController implements ContainerInjectableInterface
         return false;
     }
 
-    public function indexActionPost() : string
-    {
-        if (!headers_sent()) {
-            header('Content-Type: application/json');
-        }
 
-        $input = htmlentities($this->di->request->getPost("ip"));
+    public function indexActionPost() : array
+    {
+        $request = $this->di->request;
+
+        $input = htmlentities($request->getPost("ip"));
         $data = [];
         $item = [];
 
@@ -43,6 +43,7 @@ class ValidateIpAPIController implements ContainerInjectableInterface
             $hostName = gethostbyaddr($input);
 
             $item[] = ["ip" => $input];
+            $item[] = ["valid" => true];
             $item[] = ["type" => $ipType];
             $item[] = ["valid" => true];
 
@@ -51,14 +52,14 @@ class ValidateIpAPIController implements ContainerInjectableInterface
             }
 
             $data[] = $item;
-            // Send response as JSON
-            return json_encode($data, JSON_PRETTY_PRINT);
+
+            return [$data, 200];
         }
 
         $item[] = ["ip" => $input];
         $item[] = ["valid" => false];
         $data[] = $item;
-        // Send response as JSON
-        return json_encode($data, JSON_PRETTY_PRINT);
+
+        return [$data, 404];
     }
 }

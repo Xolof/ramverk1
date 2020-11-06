@@ -47,8 +47,8 @@ class ValidateIpAPIControllerTest extends TestCase
 
         $res = $controller->indexActionPost();
 
-        $exp = '"valid": false';
-        $this->assertContains($exp, $res);
+        $exp = false;
+        $this->assertEquals($exp, $res[0][0][1]["valid"]);
     }
 
 
@@ -68,8 +68,8 @@ class ValidateIpAPIControllerTest extends TestCase
 
         $res = $controller->indexActionPost();
 
-        $exp = '"valid": true';
-        $this->assertContains($exp, $res);
+        $exp = true;
+        $this->assertEquals($exp, $res[0][0][1]["valid"]);
     }
 
 
@@ -88,7 +88,7 @@ class ValidateIpAPIControllerTest extends TestCase
 
         $res = $controller->indexActionPost();
 
-        $exp = '"valid": true';
-        $this->assertContains($exp, $res);
+        $exp = true;
+        $this->assertEquals($exp, $res[0][0][1]["valid"]);
     }
 }
