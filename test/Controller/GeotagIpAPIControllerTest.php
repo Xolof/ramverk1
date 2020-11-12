@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Testclass.
  */
-class ValidateIpAPIControllerTest extends TestCase
+class GeoTagIpAPIControllerTest extends TestCase
 {
     // Create the di container.
     protected $di;
@@ -37,7 +37,7 @@ class ValidateIpAPIControllerTest extends TestCase
     public function testInvalidIndexActionPost()
     {
         // Setup the controller
-        $controller = new ValidateIpAPIController();
+        $controller = new GeoTagIpAPIController();
         $controller->setDI($this->di);
 
         $request = $this->di->get("request");
@@ -47,7 +47,8 @@ class ValidateIpAPIControllerTest extends TestCase
         $res = $controller->indexActionPost();
 
         $exp = false;
-        $this->assertEquals($exp, $res[0][0][1]["valid"]);
+
+        $this->assertEquals($exp, $res[0][0]["valid"]);
     }
 
 
@@ -58,7 +59,7 @@ class ValidateIpAPIControllerTest extends TestCase
     public function testValidIndexActionPostIpv4()
     {
         // Setup the controller
-        $controller = new ValidateIpAPIController();
+        $controller = new GeoTagIpAPIController();
         $controller->setDI($this->di);
 
         $request = $this->di->get("request");
@@ -68,7 +69,7 @@ class ValidateIpAPIControllerTest extends TestCase
         $res = $controller->indexActionPost();
 
         $exp = true;
-        $this->assertEquals($exp, $res[0][0][1]["valid"]);
+        $this->assertEquals($exp, $res[0][0]["valid"]);
     }
 
 
@@ -78,7 +79,7 @@ class ValidateIpAPIControllerTest extends TestCase
     public function testValidIndexActionPostIpv6()
     {
         // Setup the controller
-        $controller = new ValidateIpAPIController();
+        $controller = new GeoTagIpAPIController();
         $controller->setDI($this->di);
 
         $request = $this->di->get("request");
@@ -88,6 +89,6 @@ class ValidateIpAPIControllerTest extends TestCase
         $res = $controller->indexActionPost();
 
         $exp = true;
-        $this->assertEquals($exp, $res[0][0][1]["valid"]);
+        $this->assertEquals($exp, $res[0][0]["valid"]);
     }
 }

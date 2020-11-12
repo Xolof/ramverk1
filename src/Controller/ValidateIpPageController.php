@@ -4,26 +4,14 @@ namespace Anax\Controller;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
+use Anax\IpValidator\IpValidator;
 
 /**
- * A test controller to show off using a model.
+* A controller for validating an IP-adress.
  */
 class ValidateIpPageController implements ContainerInjectableInterface
 {
     use ContainerInjectableTrait;
-
-    private function validateIp($ipAdress)
-    {
-        if (filter_var($ipAdress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            return "IPv6";
-        };
-
-        if (filter_var($ipAdress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
-            return "IPv4";
-        };
-
-        return false;
-    }
 
     public function indexAction()
     {
@@ -39,8 +27,10 @@ class ValidateIpPageController implements ContainerInjectableInterface
         $input = htmlentities($this->di->request->getPost("ip"));
         $data = ["content" => "<h2>Result</h2>"];
 
+        $validator = new IpValidator;
+
         // Check if IP is valid
-        $ipType = $this->validateIp($input);
+        $ipType = $validator->validateIp($input);
         if ($ipType) {
             // Check if there's a domain name connected to the IP-address
             $hostName = gethostbyaddr($input) ?? "-";

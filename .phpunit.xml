@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <phpunit
     bootstrap="test/config.php">
+
+    <php>
+       <const name="PHPUNIT_RAMVERK1_TESTSUITE" value="true"/>
+    </php>
 
     <testsuites>
         <testsuite name="all">

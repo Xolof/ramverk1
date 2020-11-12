@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Routes to ease testing.
@@ -9,8 +8,8 @@ return [
     "routes" => [
         [
             "info" => "Validate IP address.",
-            "mount" => "validate-ip-page",
-            "handler" => "\Anax\Controller\ValidateIpPageController",
+            "mount" => "geotag-ip-page",
+            "handler" => "\Anax\Controller\GeoTagIpPageController",
         ],
     ]
 ];
