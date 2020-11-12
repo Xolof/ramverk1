@@ -75,7 +75,7 @@ class IpGeoTaggerTest extends TestCase
             $errorHappened = true;
             $this->assertEquals(
                 $e->getMessage(),
-                "Curl failed with error #6: Could not resolve host: invalid.example.foo"
+                "Curl failed with error #6: Could not resolve host: invalid.foo"
             );
         }
         $this->assertTrue($errorHappened);
