@@ -7,7 +7,7 @@ return [
     // All routes in order
     "routes" => [
         [
-            "info" => "Get weather forecast or history.",
+            "info" => "Validate IP address.",
             "mount" => "weather",
             "handler" => "\Anax\Controller\WeatherController",
         ],

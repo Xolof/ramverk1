@@ -6941,3 +6941,12 @@ a.rm-button.rm-clicked .rm-button-face-2 {
 .rm-max .rm-mobile {
   background-color: #38374d;
 }
+.weather_day_div {
+  border-bottom: 1px solid #ccc;
+}
+.weather_time_div:nth-child(even) {
+  background-color: #dad9f2;
+}
+#mapid {
+  height: 240px;
+}

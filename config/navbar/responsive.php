@@ -84,5 +84,10 @@ return [
             "url" => "geotag-ip-page",
             "title" => "Geotagga en IP-adress.",
         ],
+        [
+            "text" => "Väder",
+            "url" => "weather",
+            "title" => "Visa kommande eller föregående väder.",
+        ],
     ],
 ];

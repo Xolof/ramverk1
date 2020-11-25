@@ -30,7 +30,7 @@ class GeoTagIpAPIController implements ContainerInjectableInterface
 
         if ($ipType) {
             // Locate the ip-adress using Ipstack.
-            $keyHolder = $this->di->get("api-key");
+            $keyHolder = $this->di->get("geotag-key");
 
             $geoTagger = new IpGeoTagger($keyHolder, "http://api.ipstack.com");
 

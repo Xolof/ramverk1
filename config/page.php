@@ -19,6 +19,7 @@ return [
             "lang" => "sv",
             "stylesheets" => [
                 "css/oljo.min.css",
+                "css/leaflet.css",
             ],
             "javascripts" => [
                 "js/responsive-menu.js",

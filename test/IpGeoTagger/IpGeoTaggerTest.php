@@ -34,7 +34,7 @@ class IpGeoTaggerTest extends TestCase
      */
     public function testGeoTagIp()
     {
-        $keyHolder = $this->di->get("api-key");
+        $keyHolder = $this->di->get("geotag-key");
 
         $tagger = new IpGeoTagger($keyHolder, "http://api.ipstack.com");
 

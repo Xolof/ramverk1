@@ -40,7 +40,7 @@ class GeoTagIpPageController implements ContainerInjectableInterface
         $ipType = $validator->validateIp($input);
         if ($ipType) {
             // Locate the ip-adress using Ipstack.
-            $keyHolder = $this->di->get("api-key");
+            $keyHolder = $this->di->get("geotag-key");
 
             $geoTagger = new IpGeoTagger($keyHolder, "http://api.ipstack.com");
 
