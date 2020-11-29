@@ -8,8 +8,8 @@ return [
     "routes" => [
         [
             "info" => "Get weather forecast or history.",
-            "mount" => "weather",
-            "handler" => "\Anax\Controller\WeatherController",
+            "mount" => "geotag-ip-api",
+            "handler" => "\Anax\Controller\GeoTagIpAPIController",
         ],
     ]
 ];
