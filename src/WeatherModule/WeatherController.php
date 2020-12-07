@@ -1,15 +1,15 @@
 <?php
 
-namespace Anax\Controller;
+namespace Xolof\WeatherModule;
 
 use Anax\Commons\ContainerInjectableInterface;
 use Anax\Commons\ContainerInjectableTrait;
-use Anax\IpValidator\IpValidator;
-use Anax\LatlonValidator\LatlonValidator;
-use Anax\IpGeoTagger\IpGeoTagger;
-use Anax\IpGetter\IpGetter;
-use Anax\WeatherGetter\WeatherGetter;
-use Anax\WeatherFormatter\WeatherFormatter;
+use Xolof\WeatherModule\IpValidator;
+use Xolof\WeatherModule\LatlonValidator;
+use Xolof\WeatherModule\IpGeoTagger;
+use Xolof\WeatherModule\IpGetter;
+use Xolof\WeatherModule\WeatherGetter;
+use Xolof\WeatherModule\WeatherFormatter;
 use \stdClass;
 use \Exception;
 
@@ -119,9 +119,16 @@ class WeatherController implements ContainerInjectableInterface
 
     private function getData($coordinates, $when)
     {
+        $url = $this->di->get("url");
+
         $keyHolder = $this->di->get("weather-key");
 
-        $weatherGetter = new WeatherGetter($keyHolder);
+        $weatherGetter = new WeatherGetter(
+            $keyHolder,
+            "https://api.openweathermap.org/data/2.5/forecast?lat=",
+            "https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=",
+            "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat="
+        );
         $weatherFormatter = new WeatherFormatter();
 
         try {

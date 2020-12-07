@@ -1,9 +1,10 @@
 <?php
 
-namespace Anax\WeatherGetter;
+namespace Xolof\WeatherModule;
 
-use \Exception;
+// use \Exception;
 use \DateTime;
+use \Exception;
 
 /**
  * A class to validate Ip-adresses.
@@ -12,9 +13,12 @@ class WeatherGetter
 {
     private $keyHolder;
 
-    public function __construct($keyHolder)
+    public function __construct($keyHolder, $forecastBaseURL, $historyBaseURL, $locationBaseURL)
     {
         $this->keyHolder = $keyHolder;
+        $this->forecastBaseURL = $forecastBaseURL;
+        $this->historyBaseURL = $historyBaseURL;
+        $this->locationBaseURL = $locationBaseURL;
     }
 
     public function getForecast($coordinates)
@@ -26,7 +30,7 @@ class WeatherGetter
         $lat = substr(explode(",", $coordinates)[0], 0, 5);
         $lon = substr(explode(",", $coordinates)[1], 0, 5);
 
-        $url = "https://api.openweathermap.org/data/2.5/forecast?lat=$lat&lon=$lon&units=metric&mode=json&appid=" . $key;
+        $url = $this->forecastBaseURL . "$lat&lon=$lon&units=metric&mode=json&appid=" . $key;
 
         $res = $this->forecastCurl($url, $lat, $lon);
 
@@ -58,7 +62,7 @@ class WeatherGetter
         $lat = substr(explode(",", $coordinates)[0], 0, 5);
         $lon = substr(explode(",", $coordinates)[1], 0, 5);
 
-        $url = "https://api.openweathermap.org/data/2.5/onecall/timemachine?lat=$lat&lon=$lon&units=metric&dt=";
+        $url = $this->historyBaseURL . "$lat&lon=$lon&units=metric&dt=";
 
         $res = $this->historyCurl($timeStamps, $url, $lat, $lon);
 
@@ -92,7 +96,7 @@ class WeatherGetter
             }
 
             // Get the locations name
-            $locationURL = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=$lat&lon=$lon";
+            $locationURL = $this->locationBaseURL . "$lat&lon=$lon";
             $locationCh = curl_init($locationURL);
 
             $userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2';
@@ -124,15 +128,18 @@ class WeatherGetter
             }
 
             return $response;
-        } catch (Exception $e) {
-            trigger_error(
-                sprintf(
-                    'Curl failed with error #%d: %s',
-                    $e->getCode(),
-                    $e->getMessage()
-                ),
-                E_USER_ERROR
-            );
+        } catch (\Exception $e) {
+            throw new Exception("Curl failed", 1);
+
+            /** Alternative */
+            // trigger_error(
+            //     sprintf(
+            //         'Curl failed with error #%d: %s',
+            //         $e->getCode(),
+            //         $e->getMessage()
+            //     ),
+            //     E_USER_ERROR
+            // );
         }
     }
 
@@ -154,7 +161,7 @@ class WeatherGetter
             $chAll[] = $weatherCh;
 
             // Get the locations name
-            $locationURL = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=$lat&lon=$lon";
+            $locationURL = $this->locationBaseURL . "$lat&lon=$lon";
             $locationCh = curl_init($locationURL);
             $userAgent = 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2';
             curl_setopt($locationCh, CURLOPT_USERAGENT, $userAgent);
@@ -185,15 +192,18 @@ class WeatherGetter
             }
 
             return $response;
-        } catch (Exception $e) {
-            trigger_error(
-                sprintf(
-                    'Curl failed with error #%d: %s',
-                    $e->getCode(),
-                    $e->getMessage()
-                ),
-                E_USER_ERROR
-            );
+        } catch (\Exception $e) {
+            throw new Exception("Curl failed", 1);
+
+            /** Alternative */
+            // trigger_error(
+            //     sprintf(
+            //         'Curl failed with error #%d: %s',
+            //         $e->getCode(),
+            //         $e->getMessage()
+            //     ),
+            //     E_USER_ERROR
+            // );
         }
     }
 }
