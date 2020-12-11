@@ -6950,3 +6950,53 @@ a.rm-button.rm-clicked .rm-button-face-2 {
 #mapid {
   height: 240px;
 }
+.book-image {
+  width: 100px;
+}
+.book-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #7d7d7d;
+}
+.book-table thead th:nth-child(1) {
+  width: 30%;
+}
+.book-table thead th:nth-child(2) {
+  width: 20%;
+}
+.book-table thead th:nth-child(3) {
+  width: 15%;
+}
+.book-table thead th:nth-child(4) {
+  width: 35%;
+}
+.book-table th,
+.book-table td {
+  padding: 20px;
+}
+.book-table th {
+  letter-spacing: 2px;
+}
+.book-table td {
+  letter-spacing: 1px;
+}
+.book-table tbody td {
+  text-align: center;
+}
+.book-table tfoot th {
+  text-align: right;
+}
+.book-table tbody tr:nth-child(even) {
+  background-color: #dad9f2;
+}
+.book-table .book-link {
+  padding: 0.4em;
+  border: 2px solid transparent;
+  display: block;
+  height: 100%;
+  transition: 0.2s ease all;
+}
+.book-table .book-link:hover {
+  border: 2px solid #33f;
+}

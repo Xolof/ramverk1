@@ -89,5 +89,10 @@ return [
             "url" => "weather",
             "title" => "Visa kommande eller föregående väder.",
         ],
+        [
+            "text" => "Book",
+            "url" => "book",
+            "title" => "En lista med böcker.",
+        ],
     ],
 ];

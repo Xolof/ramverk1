@@ -20,6 +20,24 @@ $urlToDelete = url("book/delete");
 
 ?><h1>View all items</h1>
 
+<p>Detta är ett exempel på hur följande moduler kan användas:</p>
+<ul>
+    <li>
+        <a href="https://github.com/canax/htmlform">anax/htmlform</a>
+    </li>
+    <li>
+        <a href="https://github.com/canax/database">anax/database</a>
+    </li>
+    <li>
+        <a href="https://github.com/canax/database-query-builder">anax/database-query-builder</a>
+    </li>
+    <li>
+        <a href="https://github.com/canax/database-active-record">anax/database-active-record</a>
+    </li>
+</ul>
+
+<hr>
+
 <p>
     <a href="<?= $urlToCreate ?>">Create</a> |
     <a href="<?= $urlToDelete ?>">Delete</a>
@@ -32,7 +50,7 @@ $urlToDelete = url("book/delete");
 endif;
 ?>
 
-<table>
+<table class="book-table">
     <tr>
         <th>Id</th>
         <th>Title</th>
@@ -46,7 +64,18 @@ endif;
         </td>
         <td><?= $item->title ?></td>
         <td><?= $item->author ?></td>
-        <td><?= $item->image ?></td>
+        <td>
+            <a
+                href="<?= $item->image ?>"
+                class="book-link"
+            >
+                <img
+                    class="book-image"
+                    src="<?= $item->image ?>"
+                    alt="<?= $item->title ?>"
+                />
+            </a>
+        </td>
     </tr>
     <?php endforeach; ?>
 </table>

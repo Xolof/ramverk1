@@ -17,7 +17,7 @@ $urlToViewItems = url("book");
 
 
 
-?><h1>Create a item</h1>
+?><h1>Create an item</h1>
 
 <?= $form ?>
 

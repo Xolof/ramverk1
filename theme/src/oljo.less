@@ -267,3 +267,66 @@ img.responsive {
 #mapid {
     height: 240px;
 }
+
+.book-image {
+    width: 100px;
+}
+
+.book-table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #7d7d7d;
+
+    thead th:nth-child(1) {
+      width: 30%;
+    }
+
+    thead th:nth-child(2) {
+      width: 20%;
+    }
+
+    thead th:nth-child(3) {
+      width: 15%;
+    }
+
+    thead th:nth-child(4) {
+      width: 35%;
+    }
+
+    th, td {
+      padding: 20px;
+    }
+
+    th {
+      letter-spacing: 2px;
+    }
+
+    td {
+      letter-spacing: 1px;
+    }
+
+    tbody td {
+      text-align: center;
+    }
+
+    tfoot th {
+      text-align: right;
+    }
+
+
+    tbody tr:nth-child(even) {
+        background-color: #dad9f2;
+    }
+
+    .book-link {
+        padding: 0.4em;
+        border: 2px solid transparent;
+        display: block;
+        height: 100%;
+        &:hover {
+            border: 2px solid @anchorColorHover;
+        }
+        transition: 0.5s ease all;
+    }
+}
