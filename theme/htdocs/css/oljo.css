@@ -6995,7 +6995,7 @@ a.rm-button.rm-clicked .rm-button-face-2 {
   border: 2px solid transparent;
   display: block;
   height: 100%;
-  transition: 0.2s ease all;
+  transition: 0.5s ease all;
 }
 .book-table .book-link:hover {
   border: 2px solid #33f;
