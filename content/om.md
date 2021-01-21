@@ -19,7 +19,7 @@ views:
 Om
 =========================
 
-Den här kursen handlar om ramverk i PHP.
+Den här kursen handlar om PHP-ramverk.
 
 
 [FIGURE src=image/kod.png?w=100% caption="Så här kan det se ut i ett ramverk."]
